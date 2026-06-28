@@ -1,0 +1,84 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "df-azureproject21"
+		},
+		"azure sql_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'azure sql'"
+		},
+		"data lake_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'data lake'"
+		},
+		"azure sql_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "azureprojectservermohit.database.windows.net"
+		},
+		"azure sql_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "azureproject-db-mohit"
+		},
+		"azure sql_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "adminmohit"
+		},
+		"data lake_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://storageazureproject11.dfs.core.windows.net/"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "df-azureproject21_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"azure sql_password": {
+						"value": "[parameters('azure sql_password')]"
+					},
+					"data lake_accountKey": {
+						"value": "[parameters('data lake_accountKey')]"
+					},
+					"azure sql_properties_typeProperties_server": {
+						"value": "[parameters('azure sql_properties_typeProperties_server')]"
+					},
+					"azure sql_properties_typeProperties_database": {
+						"value": "[parameters('azure sql_properties_typeProperties_database')]"
+					},
+					"azure sql_properties_typeProperties_userName": {
+						"value": "[parameters('azure sql_properties_typeProperties_userName')]"
+					},
+					"data lake_properties_typeProperties_url": {
+						"value": "[parameters('data lake_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}

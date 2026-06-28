@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "df-azureproject21"
+		},
+		"azure sql_password": {
+			"value": ""
+		},
+		"data lake_accountKey": {
+			"value": ""
+		},
+		"azure sql_properties_typeProperties_server": {
+			"value": "azureprojectservermohit.database.windows.net"
+		},
+		"azure sql_properties_typeProperties_database": {
+			"value": "azureproject-db-mohit"
+		},
+		"azure sql_properties_typeProperties_userName": {
+			"value": "adminmohit"
+		},
+		"data lake_properties_typeProperties_url": {
+			"value": "https://storageazureproject11.dfs.core.windows.net/"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}

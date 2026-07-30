@@ -18,74 +18,37 @@ This project simulates a real-world enterprise data pipeline. Raw data is pulled
 
 ## 🏗️ Architecture
 
-
-<svg width="680" height="920" viewBox="0 0 680 920" xmlns="http://www.w3.org/2000/svg" role="img">
-<title>Azure data engineering pipeline architecture</title>
-<desc>Data flows from Azure SQL Database and GitHub, through Azure Data Factory into a Bronze layer, is modeled into a star schema via Azure Databricks and Spark into a Silver layer, refined with Delta Live Tables into a Gold layer, and finally served through Microsoft Fabric as a data warehouse.</desc>
-<defs>
-<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-<path d="M2 1L8 5L2 9" fill="none" stroke="#73726c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-</marker>
-</defs>
-<rect x="0" y="0" width="680" height="920" fill="#FFFFFF"/>
-
-<!-- Connectors -->
-<line x1="340" y1="96" x2="340" y2="152" stroke="#73726c" stroke-width="1" marker-end="url(#arrow)"/>
-<line x1="340" y1="208" x2="340" y2="264" stroke="#73726c" stroke-width="1" marker-end="url(#arrow)"/>
-<line x1="340" y1="320" x2="340" y2="376" stroke="#73726c" stroke-width="1" marker-end="url(#arrow)"/>
-<line x1="340" y1="432" x2="340" y2="488" stroke="#73726c" stroke-width="1" marker-end="url(#arrow)"/>
-<line x1="340" y1="544" x2="340" y2="600" stroke="#73726c" stroke-width="1" marker-end="url(#arrow)"/>
-<line x1="340" y1="656" x2="340" y2="712" stroke="#73726c" stroke-width="1" marker-end="url(#arrow)"/>
-<line x1="340" y1="768" x2="340" y2="824" stroke="#73726c" stroke-width="1" marker-end="url(#arrow)"/>
-
-<!-- Security badge -->
-<rect x="390" y="98" width="230" height="28" rx="14" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
-<text x="505" y="112" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#085041" text-anchor="middle" dominant-baseline="central">Key Vault &amp; managed identity</text>
-
-<!-- Box 1: Data sources -->
-<rect x="60" y="40" width="560" height="56" rx="8" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.5"/>
-<text x="340" y="64" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#444441" text-anchor="middle" dominant-baseline="central">Data sources</text>
-<text x="340" y="82" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#5F5E5A" text-anchor="middle" dominant-baseline="central">Azure SQL Database + GitHub</text>
-
-<!-- Box 2: Azure Data Factory -->
-<rect x="60" y="152" width="560" height="56" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
-<text x="340" y="176" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#0C447C" text-anchor="middle" dominant-baseline="central">Azure Data Factory</text>
-<text x="340" y="194" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#185FA5" text-anchor="middle" dominant-baseline="central">Secure, orchestrated ingestion</text>
-
-<!-- Box 3: Bronze layer -->
-<rect x="60" y="264" width="560" height="56" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
-<text x="340" y="288" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#712B13" text-anchor="middle" dominant-baseline="central">Bronze layer</text>
-<text x="340" y="306" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#993C1D" text-anchor="middle" dominant-baseline="central">Raw data landing zone</text>
-
-<!-- Box 4: Azure Databricks + Spark -->
-<rect x="60" y="376" width="560" height="56" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
-<text x="340" y="400" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#085041" text-anchor="middle" dominant-baseline="central">Azure Databricks + Spark</text>
-<text x="340" y="418" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#0F6E56" text-anchor="middle" dominant-baseline="central">Star schema modeling</text>
-
-<!-- Box 5: Silver layer -->
-<rect x="60" y="488" width="560" height="56" rx="8" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.5"/>
-<text x="340" y="512" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#444441" text-anchor="middle" dominant-baseline="central">Silver layer</text>
-<text x="340" y="530" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#5F5E5A" text-anchor="middle" dominant-baseline="central">Cleaned, modeled data</text>
-
-<!-- Box 6: Delta Live Tables -->
-<rect x="60" y="600" width="560" height="56" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
-<text x="340" y="624" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#085041" text-anchor="middle" dominant-baseline="central">Delta Live Tables</text>
-<text x="340" y="642" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#0F6E56" text-anchor="middle" dominant-baseline="central">Declarative data pipelines</text>
-
-<!-- Box 7: Gold layer -->
-<rect x="60" y="712" width="560" height="56" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/>
-<text x="340" y="736" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#633806" text-anchor="middle" dominant-baseline="central">Gold layer</text>
-<text x="340" y="754" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#854F0B" text-anchor="middle" dominant-baseline="central">Curated, aggregated data</text>
-
-<!-- Box 8: Microsoft Fabric -->
-<rect x="60" y="824" width="560" height="56" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
-<text x="340" y="848" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#3C3489" text-anchor="middle" dominant-baseline="central">Microsoft Fabric</text>
-<text x="340" y="866" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#534AB7" text-anchor="middle" dominant-baseline="central">Serving data warehouse</text>
-
-</svg>
-
 ```
- 
+  Sources: Azure SQL Database  +  GitHub (raw files)
+                    │
+                    ▼
+     Azure Data Factory (Orchestration & Ingestion)
+        secured via Managed Identity + Azure Key Vault
+                    │
+                    ▼
+   Azure Data Lake Storage Gen2 — 🥉 Bronze Layer (raw data)
+                    │
+                    ▼
+      Azure Databricks + Spark (Transformation)
+        → cleans data & models it into a Star Schema
+                    │
+                    ▼
+   Azure Data Lake Storage Gen2 — 🥈 Silver Layer (modeled data)
+                    │
+                    ▼
+      Azure Databricks + Delta Live Tables
+        → applies business rules / aggregations
+                    │
+                    ▼
+   Azure Data Lake Storage Gen2 — 🥇 Gold Layer (curated data)
+                    │
+                    ▼
+        Microsoft Fabric (Warehouse)
+```
+
+*(Replace this diagram with your own architecture screenshot from `/screenshots/architecture.png`)*
+
+---
 
 ## 🛠️ Tech Stack
 
@@ -203,6 +166,6 @@ This project ingests data from **two different source types**, a common real-wor
 
 ## 👤 Author
 
-**[Your Name]**
-📧 [your.email@example.com]
-🔗 [LinkedIn](https://linkedin.com/in/yourprofile) | [Portfolio](https://yourportfolio.com)
+**Mohit Pandey**
+📧 [mr.mohitreally@gmail.com]
+🔗 [LinkedIn](https://linkedin.com/in/mohit-pandey-data-engineer) 

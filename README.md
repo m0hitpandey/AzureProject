@@ -167,5 +167,5 @@ This project ingests data from **two different source types**, a common real-wor
 ## 👤 Author
 
 **Mohit Pandey**
-📧 [mr.mohitreally@gmail.com]
+![Email Badge](https://shields.io) mr.mohitreally@gmail.com
 🔗 [LinkedIn](https://linkedin.com/in/mohit-pandey-data-engineer) 

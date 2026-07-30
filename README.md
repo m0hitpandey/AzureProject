@@ -118,7 +118,7 @@ This project ingests data from **two different source types**, a common real-wor
 | Stage | Screenshot |
 |---|---|
 | Azure Resource Group Setup |  ![Resource Group](screenshots/Azure%20-%20Resources.png) |
-| ADF Pipeline (Bronze Ingestion) | ![Resource Group](screenshots/Azure%20-%20Resources.png) |
+| ADF Pipeline (Bronze Ingestion) | ![Resource Group](screenshots/Full%20ADF%20Pipeline.png) |
 | Databricks Notebook (Silver Transform) | ![Resource Group](screenshots/Azure%20-%20Resources.png) |
 | Databricks DLT (Gold Transform) | ![Resource Group](screenshots/Azure%20-%20Resources.png) |
 

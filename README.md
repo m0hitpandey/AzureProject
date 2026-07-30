@@ -12,7 +12,7 @@ This project simulates a real-world enterprise data pipeline. Raw data is pulled
 - Build a scalable, cloud-native ETL/ELT pipeline
 - Apply the Medallion architecture pattern (Bronze / Silver / Gold)
 - Practice orchestration and transformation on Azure
-- Model curated data into a Star Schema and serve it via a Fabric Warehouse
+- Model curated data into a Star Schema
 
 ---
 
@@ -41,12 +41,9 @@ This project simulates a real-world enterprise data pipeline. Raw data is pulled
                     │
                     ▼
    Azure Data Lake Storage Gen2 — 🥇 Gold Layer (curated data)
-                    │
-                    ▼
-        Microsoft Fabric (Warehouse)
+  
 ```
 
-*(Replace this diagram with your own architecture screenshot from `/screenshots/architecture.png`)*
 
 ---
 
@@ -74,7 +71,6 @@ This project ingests data from **two different source types**, a common real-wor
 - **Azure SQL Database** — relational source data, connected via a Linked Service in ADF
 - **GitHub (HTTP source)** — raw CSV/flat files pulled directly via an HTTP connector in ADF
 
-*(Update with the exact dataset/tables you used)*
 
 ---
 
@@ -99,21 +95,16 @@ This project ingests data from **two different source types**, a common real-wor
 - Applied business logic, data quality expectations, and aggregations.
 - Final curated tables written to the `gold/` container as Delta tables.
 
-### 4. Serving Layer
-- Loaded/exposed the Gold layer to a **Microsoft Fabric Warehouse**, which serves as the final analytics-ready warehouse layer.
-
 ---
 
 ## 🔐 Security & Access Management
-- Used **Managed Identity** for secure, credential-free authentication between Azure services (ADF, Databricks, Fabric, Storage).
+- Used **Managed Identity** for secure, credential-free authentication between Azure services (ADF, Databricks, Storage).
 - Stored connection strings/secrets in **Azure Key Vault** and referenced them from ADF Linked Services instead of hard-coding credentials.
 - Applied **role-based access control (RBAC)** — assigned appropriate roles (e.g. `Storage Blob Data Contributor`) to ADF and Databricks identities on the storage account.
 
 --
 
 ## 📸 Screenshots
-
-> Add your own screenshots here to showcase each stage of the pipeline.
 
 | Stage | Screenshot |
 |---|---|
@@ -129,7 +120,6 @@ This project ingests data from **two different source types**, a common real-wor
 ```
 ├── adf/                     # ADF pipeline JSON exports / ARM templates
 ├── databricks-notebooks/    # Spark notebooks & Delta Live Tables pipelines for Silver & Gold
-├── fabric/                  # Fabric Warehouse setup / SQL scripts
 ├── screenshots/             # Project screenshots
 ├── datasets/                # Sample/raw data (if applicable)
 └── README.md
@@ -148,7 +138,7 @@ This project ingests data from **two different source types**, a common real-wor
 2. **Set up Linked Services** in ADF for the Azure SQL Database and GitHub sources, plus the ADLS Gen2 sink (secure with Key Vault + Managed Identity).
 3. **Build and run the ingestion pipeline** to load raw data into the Bronze layer.
 4. **Run the Databricks notebooks** (`/databricks-notebooks`) to model Bronze → Silver (Star Schema) and Silver → Gold (Delta Live Tables).
-5. **Create a Warehouse in Microsoft Fabric** and load/point it to the Gold layer.
+5. **load/point it to the Gold layer.
 
 ---
 
@@ -159,7 +149,6 @@ This project ingests data from **two different source types**, a common real-wor
 - Securing pipelines with **Azure Key Vault** and Managed Identity instead of hard-coded credentials
 - Modeling data into a **Star Schema** using Spark on Azure Databricks
 - Building declarative, managed pipelines with **Delta Live Tables**
-- Serving curated data through **Microsoft Fabric** as a warehouse layer
 
 ---
 

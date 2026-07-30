@@ -109,7 +109,7 @@ This project ingests data from **two different source types**, a common real-wor
 - Stored connection strings/secrets in **Azure Key Vault** and referenced them from ADF Linked Services instead of hard-coding credentials.
 - Applied **role-based access control (RBAC)** — assigned appropriate roles (e.g. `Storage Blob Data Contributor`) to ADF and Databricks identities on the storage account.
 
----
+--
 
 ## 📸 Screenshots
 
@@ -117,8 +117,7 @@ This project ingests data from **two different source types**, a common real-wor
 
 | Stage | Screenshot |
 |---|---|
-| Azure Resource Group Setup | `![Uploading Azure - Resources.png…]()
-` |
+| Azure Resource Group Setup |  ![Resource Group](screenshots/Azure - Resources.png)|
 | ADF Pipeline (Bronze Ingestion) | `screenshots/adf-pipeline.png` |
 | Databricks Notebook (Silver Transform) | `screenshots/databricks-silver.png` |
 | Databricks Notebook (Gold Transform) | `screenshots/databricks-gold.png` |

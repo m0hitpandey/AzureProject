@@ -19,7 +19,7 @@ This project simulates a real-world enterprise data pipeline. Raw data is pulled
 ## 🏗️ Architecture
 
 ```
-  Sources: Azure SQL Database  +  GitHub (raw files)
+  Sources: Azure SQL Database  +  raw files
                     │
                     ▼
      Azure Data Factory (Orchestration & Ingestion)

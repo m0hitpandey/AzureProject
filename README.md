@@ -79,7 +79,7 @@ This project ingests data from **two different source types**, a common real-wor
 ### 1. Ingestion (Bronze Layer)
 - Provisioned **Azure Data Factory** and configured **Linked Services** to two sources:
   - **Azure SQL Database** (relational tables)
-  - **GitHub** (raw files via HTTP connector)
+  - **GitHub** (raw files)
 - Secured all connections using **Managed Identity** and secrets stored in **Azure Key Vault** (no credentials hard-coded in pipelines).
 - Built Copy Data pipelines to bring data from both sources into ADLS Gen2 under the `bronze/` container, preserved in its raw, unmodified form.
 

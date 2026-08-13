@@ -134,7 +134,6 @@ This project ingests data from **two different source types**, a common real-wor
    - Storage Account (ADLS Gen2 enabled)
    - Azure Data Factory
    - Azure Databricks workspace
-   - Microsoft Fabric workspace (Warehouse)
 2. **Set up Linked Services** in ADF for the Azure SQL Database and GitHub sources, plus the ADLS Gen2 sink (secure with Key Vault + Managed Identity).
 3. **Build and run the ingestion pipeline** to load raw data into the Bronze layer.
 4. **Run the Databricks notebooks** (`/databricks-notebooks`) to model Bronze → Silver (Star Schema) and Silver → Gold (Delta Live Tables).

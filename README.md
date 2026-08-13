@@ -57,7 +57,7 @@ This project simulates a real-world enterprise data pipeline. Raw data is pulled
 | Storage | Azure Data Lake Storage Gen2 (ADLS Gen2) |
 | Transformation | Azure Databricks, Apache Spark, Delta Live Tables |
 | Data Modeling | Star Schema |
-| Data Warehouse | Microsoft Fabric (Warehouse) |
+| Data Warehouse | Azure Data Lake Storage Gen2 (External Delta Tables) |
 | Security | Azure Key Vault, Managed Identity |
 | Language | Python (PySpark), SQL |
 | Version Control | Git & GitHub |

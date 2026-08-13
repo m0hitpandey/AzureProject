@@ -69,7 +69,7 @@ This project simulates a real-world enterprise data pipeline. Raw data is pulled
 This project ingests data from **two different source types**, a common real-world pattern:
 
 - **Azure SQL Database** — relational source data, connected via a Linked Service in ADF
-- **GitHub (HTTP source)** — raw CSV/flat files pulled directly via an HTTP connector in ADF
+- **GitHub** — raw CSV/flat files pulled directly via an HTTP connector in ADF
 
 
 ---

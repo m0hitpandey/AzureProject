@@ -6,7 +6,7 @@ An end-to-end data engineering pipeline built on Microsoft Azure that ingests ra
 
 ## 📌 Project Overview
 
-This project simulates a real-world enterprise data pipeline. Raw data is pulled from multiple sources, ingested into a data lake, transformed through progressive layers of cleaning and modeling, and finally loaded into a warehouse for analytics.
+This project simulates a real-world enterprise data pipeline. Raw data is pulled from multiple sources, ingested into a data lake, transformed through progressive layers of cleaning and modeling, and finally loaded into external Delta tables on Azure.
 
 **Goals of this project:**
 - Build a scalable, cloud-native ETL/ELT pipeline
